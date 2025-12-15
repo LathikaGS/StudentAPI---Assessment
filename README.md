@@ -50,7 +50,7 @@ The application supports **JWT-based authentication**, **user registration/login
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ### Backend (StudentApi)
 ```
