@@ -83,4 +83,32 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// 🔹 Dummy student data (added without changing existing code)
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+    db.Database.EnsureCreated();
+
+    if (!db.Students.Any())
+    {
+        db.Students.AddRange(
+            new Student
+            {
+                Name = "Lathika",
+                Class = "7",
+                Section = "A"
+            },
+            new Student
+            {
+                Name = "Viyass",
+                Class = "8",
+                Section = "B"
+            }
+        );
+
+        db.SaveChanges();
+    }
+}
+
 app.Run();
